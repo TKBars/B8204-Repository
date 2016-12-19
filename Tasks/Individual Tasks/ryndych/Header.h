@@ -2,8 +2,8 @@
 struct dek {
 	int value;
 	struct dek *prev;
-	struct dek *nxt ;
-	
+	struct dek *nxt;
+
 };
 
 struct dekInfo
@@ -14,6 +14,6 @@ struct dekInfo
 };
 void lPush(dekInfo &dInf, int insVal);
 void RPush(dekInfo &dInf, int insVal);
-void lPop(dekInfo &dInf);
-void RPop(dekInfo &dInf);
+int lPop(dekInfo &dInf);
+int RPop(dekInfo &dInf);
 void printDekSize(dekInfo dInf);
