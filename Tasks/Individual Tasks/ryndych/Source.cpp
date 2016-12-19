@@ -37,17 +37,31 @@ void RPush(dekInfo &dInf, int insVal) {
 	tmp->value=insVal;
 	
 }
-void lPop(dekInfo &dInf) {
-	cout<<"\n"<<dInf.head->value<<"\n";
-	dInf.head = dInf.head->prev;
-	free(dInf.head->nxt);
-	dInf.head->nxt = NULL;
+int lPop(dekInfo &dInf) {
+	if (dInf.head!=NULL){
+		int tmp=dInf.head->value;
+		dInf.head = dInf.head->prev;
+		if (dInf.head!=NULL){
+			free(dInf.head->nxt);
+			dInf.head->nxt = NULL;
+			return tmp;
+		}
+		else return(-1);
+	}
+	else return(-1);
 }
-void RPop(dekInfo &dInf) {
-	cout<<"\n"<<dInf.tail->value<<"\n";
-	dInf.tail = dInf.tail->nxt;
-	free(dInf.tail->prev);
-	dInf.tail->prev = NULL;
+int RPop(dekInfo &dInf) {
+	if (dInf.tail!=NULL){
+		int tmp=dInf.head->value;
+		dInf.tail = dInf.tail->nxt;
+		if (dInf.tail!=NULL){
+			free(dInf.tail->prev);
+			dInf.tail->prev = NULL;
+			return tmp;
+		}
+		else return(-1);
+	}
+	else return(-1);
 }
 void printDekSize(dekInfo dInf) {
 	cout << "\n"<<dInf.size;
