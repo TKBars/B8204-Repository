@@ -5,7 +5,7 @@
 using namespace std;
 
 void lPush(dekInfo &dInf, int insVal){
-	dek *tmp =  (dek*) malloc(sizeof(dek));
+	dek *tmp = (dek*)malloc(sizeof(dek));
 	tmp->prev = NULL;
 	tmp->nxt = NULL;
 	dInf.size++;
@@ -18,7 +18,7 @@ void lPush(dekInfo &dInf, int insVal){
 		dInf.head->nxt = tmp;
 		dInf.head = tmp;
 	}
-	tmp->value=insVal;
+	tmp->value = insVal;
 }
 void RPush(dekInfo &dInf, int insVal) {
 	dek *tmp = (dek*)malloc(sizeof(dek));
@@ -34,36 +34,36 @@ void RPush(dekInfo &dInf, int insVal) {
 		dInf.tail->prev = tmp;
 		dInf.tail = tmp;
 	}
-	tmp->value=insVal;
-	
+	tmp->value = insVal;
+
 }
 int lPop(dekInfo &dInf) {
-	if (dInf.head!=NULL){
-		int tmp=dInf.head->value;
+	if (dInf.head != NULL){
+		dInf.size--;
+		int tmp = dInf.head->value;
 		dInf.head = dInf.head->prev;
-		if (dInf.head!=NULL){
+		if (dInf.head != NULL){
 			free(dInf.head->nxt);
 			dInf.head->nxt = NULL;
-			return tmp;
 		}
-		else return(-1);
+		return tmp;
 	}
 	else return(-1);
 }
 int RPop(dekInfo &dInf) {
-	if (dInf.tail!=NULL){
-		int tmp=dInf.head->value;
+	if (dInf.tail != NULL){
+		dInf.size--;
+		int tmp = dInf.head->value;
 		dInf.tail = dInf.tail->nxt;
-		if (dInf.tail!=NULL){
+		if (dInf.tail != NULL){
 			free(dInf.tail->prev);
 			dInf.tail->prev = NULL;
-			return tmp;
 		}
-		else return(-1);
+		return tmp;
 	}
 	else return(-1);
 }
 void printDekSize(dekInfo dInf) {
-	cout << "\n"<<dInf.size;
+	cout << "\n" << dInf.size;
 	cout << "\n";
 }
